@@ -3,6 +3,10 @@ import flet as ft
 def main(page: ft.Page):
     def dropdown_changed(e):
         t.value = f"Dropdown changed to {dd.value}."
+
+        # change background color of page
+        page.bgcolor = dd.value
+        # change text color of dropdown
         dd.color = dd.value
         page.update()
 
