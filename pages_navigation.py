@@ -2,6 +2,8 @@ import flet as ft
 import time
 
 def main(page: ft.Page):
+    # maximize the window
+    page.window_maximized = True
     page.title = "Routes Example"
 
     def route_change(route):
@@ -27,7 +29,7 @@ def main(page: ft.Page):
             )
         page.update()
 
-    def view_pop(view):
+    def view_pop():
         page.views.pop()
         top_view = page.views[-1]
         page.go(top_view.route)
