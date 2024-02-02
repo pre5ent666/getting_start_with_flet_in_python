@@ -11,4 +11,5 @@ def main(page):
     page.add(GreeterControl())
     page.add(GreeterControl())
 
-ft.app(target=main)
+if __name__ == "__main__":
+    ft.app(target=main)
