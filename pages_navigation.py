@@ -1,5 +1,6 @@
 import flet as ft
 import time
+from UserControls.greeter import GreeterControl
 
 def main(page: ft.Page):
     # maximize the window
@@ -20,14 +21,29 @@ def main(page: ft.Page):
                 [
                     ft.AppBar(title=ft.Text("Flet app"), bgcolor=ft.colors.SURFACE_VARIANT),
                     ft.ElevatedButton("Visit Store", on_click=lambda _: page.go("/store")),
+                    ft.ElevatedButton("Visit Greeter", on_click=lambda _: page.go("/greeter")),
                 ],
             )
     
+    greeter = GreeterControl()
+    page_greeter = ft.View(
+                    "/greeter",
+                    [
+                        ft.AppBar(title=ft.Text("Greeter"), bgcolor=ft.colors.SURFACE_VARIANT),
+                        greeter,
+                        ft.ElevatedButton("Go Home", on_click=lambda _: page.go("/")),
+                    ],
+                )
+
     def route_change(route):
         page.views.clear()
         page.views.append(page_home)
         if page.route == "/store":
             page.views.append(page_store)
+        elif page.route == "/greeter":
+            # greeter = GreeterControl()
+            # page.views.append(greeter)
+            page.views.append(page_greeter)
         page.update()
 
     def view_pop():
